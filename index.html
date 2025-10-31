@@ -34,8 +34,24 @@
     @media (min-width:680px){ .grid{grid-template-columns: repeat(2, minmax(0,1fr));} }
     @media (min-width:980px){ .grid{grid-template-columns: repeat(3, minmax(0,1fr));} }
 
-    .card{position:relative; display:block; padding:18px 18px 16px; border:1px solid var(--border); border-radius:16px; background:var(--card); box-shadow: var(--shadow); text-decoration:none; color:inherit; transition: transform .18s ease, background .18s ease, border-color .18s ease}
-    .card:hover{ transform: translateY(-2px); background: var(--card-hover); border-color: rgba(122,162,255,.25); }
+    .card{
+      position:relative;
+      display:block;
+      padding:18px 18px 16px;
+      border:1px solid var(--border);
+      border-radius:16px;
+      background:var(--card);
+      box-shadow: var(--shadow);
+      text-decoration:none;
+      color:inherit;
+      transition: transform .2s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .card:hover{
+      transform: translateY(-4px);
+      background: var(--card-hover);
+      border-color: var(--accent);
+      box-shadow: 0 8px 20px rgba(122,162,255,0.35);
+    }
 
     .num{display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:10px; background: rgba(122,162,255,.18); color: var(--accent); font-weight:700; margin-bottom:10px}
     .title{font-weight:700; font-size:18px; line-height:1.35; letter-spacing:-.2px}
@@ -50,6 +66,7 @@
     .badge{font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid var(--border); background: rgba(255,255,255,.03)}
   </style>
 </head>
+
 <body>
   <header>
     <div class="wrap">
@@ -60,7 +77,6 @@
 
   <main class="wrap">
     <section class="hero">
-      <!-- 붓다 아바타 클릭 시 X 프로필로 이동 -->
       <a href="https://x.com/bud_dha__" target="_blank" rel="noopener">
         <img src="https://pbs.twimg.com/profile_images/1974636725298438145/_3lS4Fy6_400x400.jpg" alt="붓다 아바타" />
       </a>
@@ -84,51 +100,67 @@
         <div class="title">비트코인의 시작</div>
         <div class="desc"></div>
       </a>
+
+      <a class="card" href="part1-5.html" target="_blank" rel="noopener">
+        <span class="num">1.5</span>
+        <div class="title">세상에서 제일 이상한 돈</div>
+        <div class="desc">완성</div>
+      </a>
+
       <a class="card" href="https://x.com/your_handle/status/XXXXXXXXX" target="_blank" rel="noopener nofollow">
         <span class="num">2</span>
         <div class="title">발전과정</div>
         <div class="desc">예정</div>
       </a>
+
       <a class="card" href="https://x.com/your_handle/status/XXXXXXXXX" target="_blank" rel="noopener nofollow">
         <span class="num">3</span>
         <div class="title">비트코인 말고도 수많은 코인들이 왜 생겼는가</div>
         <div class="desc">예정</div>
       </a>
+
       <a class="card" href="https://x.com/your_handle/status/XXXXXXXXX" target="_blank" rel="noopener nofollow">
         <span class="num">4</span>
         <div class="title">CeFi vs DeFi</div>
         <div class="desc">예정</div>
       </a>
+
       <a class="card" href="https://x.com/your_handle/status/XXXXXXXXX" target="_blank" rel="noopener nofollow">
         <span class="num">5</span>
         <div class="title">스테이블 코인: 디지털 달러의 등장</div>
         <div class="desc">예정</div>
       </a>
+
       <a class="card" href="https://x.com/your_handle/status/XXXXXXXXX" target="_blank" rel="noopener nofollow">
         <span class="num">6</span>
         <div class="title">RWA시장</div>
         <div class="desc">예정</div>
       </a>
+
       <a class="card" href="https://x.com/your_handle/status/XXXXXXXXX" target="_blank" rel="noopener nofollow">
         <span class="num">7</span>
         <div class="title">블록체인 구조</div>
         <div class="desc">예정</div>
       </a>
+
       <a class="card" href="https://x.com/your_handle/status/XXXXXXXXX" target="_blank" rel="noopener nofollow">
         <span class="num">8</span>
         <div class="title">블록체인의 확장성 트릴레마</div>
         <div class="desc">예정</div>
       </a>
+
       <a class="card" href="https://x.com/your_handle/status/XXXXXXXXX" target="_blank" rel="noopener nofollow">
         <span class="num">9</span>
         <div class="title">규제와 제도권</div>
         <div class="desc">예정</div>
       </a>
+
       <a class="card" href="https://x.com/your_handle/status/XXXXXXXXX" target="_blank" rel="noopener nofollow">
         <span class="num">10</span>
         <div class="title">AI와 Agentic DeFi</div>
         <div class="desc">예정</div>
       </a>
+
       <a class="card" href="https://x.com/your_handle/status/XXXXXXXXX" target="_blank" rel="noopener nofollow">
         <span class="num">11</span>
         <div class="title">결론: 돈의 혁명</div>
