@@ -17,10 +17,16 @@
       --card-hover: #171a22;
       --border: #1d2230;
       --shadow: 0 10px 30px rgba(0,0,0,.5);
+      /* 난이도 색상 */
+      --easy: #4E8FFF;   /* 입문(파랑) */
+      --mid:  #FF9F3F;   /* 기본기(주황) */
+      --hard: #E74C3C;   /* 심화(빨강) */
+      --core: #9B59B6;   /* 핵심 심화(보라) */
     }
     @media (prefers-color-scheme: light){
       :root{
         --bg: #f7f8fb; --panel: #ffffff; --muted:#5b647a; --text:#0f172a; --accent:#345dff; --card:#ffffff; --card-hover:#f7f9ff; --border:#e7eaf3; --shadow: 0 10px 25px rgba(17,24,39,.08);
+        --easy:#4E8FFF; --mid:#FF9F3F; --hard:#E74C3C; --core:#9B59B6;
       }
     }
     *{box-sizing:border-box}
@@ -64,6 +70,18 @@
     .hero img{width:140px; height:140px; border-radius:50%; object-fit:cover; box-shadow: var(--shadow); margin-bottom:14px; cursor:pointer}
     .badges{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:10px}
     .badge{font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid var(--border); background: rgba(255,255,255,.03)}
+
+    /* ===== 난이도 뱃지 ===== */
+    .d-badge{
+      position:absolute; top:10px; right:10px;
+      padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700; color:#fff;
+      box-shadow: 0 6px 16px rgba(0,0,0,.25);
+      user-select:none;
+    }
+    .d-badge.easy { background: var(--easy); }
+    .d-badge.mid  { background: var(--mid); }
+    .d-badge.hard { background: var(--hard); }
+    .d-badge.core { background: var(--core); }
   </style>
 </head>
 
@@ -96,102 +114,119 @@
     <!-- 카드 섹션 -->
     <section class="grid">
       <a class="card" href="https://x.com/bud_dha__/status/1983944064056881553" target="_blank" rel="noopener nofollow">
+        <span class="d-badge easy">입문</span>
         <span class="num">1</span>
         <div class="title">비트코인의 시작</div>
         <div class="desc">10/30</div>
       </a>
 
       <a class="card" href="https://x.com/bud_dha__/status/1984049827207094752" target="_blank" rel="noopener">
+        <span class="d-badge easy">입문</span>
         <span class="num">1.5</span>
         <div class="title">세상에서 제일 이상한 돈</div>
         <div class="desc">10/31</div>
       </a>
 
       <a class="card" href="https://x.com/bud_dha__/status/1984277105551773887" target="_blank" rel="noopener nofollow">
+        <span class="d-badge easy">입문</span>
         <span class="num">2</span>
         <div class="title">발전과정</div>
         <div class="desc"></div>
       </a>
       
-        <a class="card" href="https://x.com/bud_dha__/status/1984436807401115666" target="_blank" rel="noopener nofollow">
+      <a class="card" href="https://x.com/bud_dha__/status/1984436807401115666" target="_blank" rel="noopener nofollow">
+        <span class="d-badge easy">입문</span>
         <span class="num">2.5</span>
         <div class="title">세상을 바꾸려는 코드들의 전쟁</div>
         <div class="desc">11.01</div>
       </a>
 
       <a class="card" href="https://x.com/bud_dha__/status/1984519274447213017" target="_blank" rel="noopener nofollow">
+        <span class="d-badge easy">입문</span>
         <span class="num">3</span>
         <div class="title">비트코인 말고도 수많은 코인들이 왜 생겼는가</div>
         <div class="desc">11/01</div>
       </a>
 
       <a class="card" href="https://x.com/bud_dha__/status/1984751589492736090" target="_blank" rel="noopener nofollow">
+        <span class="d-badge easy">입문</span>
         <span class="num">0</span>
         <div class="title">중간정리</div>
         <div class="desc">11/02</div>
       </a>
       
       <a class="card" href="https://x.com/bud_dha__/status/1984764121158717839" target="_blank" rel="noopener nofollow">
+        <span class="d-badge mid">기본기</span>
         <span class="num">4</span>
         <div class="title">CeFi vs DeFi</div>
         <div class="desc">11/02</div>
       </a>
 
-         <a class="card" href="https://x.com/bud_dha__/status/1984847940960337990" target="_blank" rel="noopener nofollow">
+      <a class="card" href="https://x.com/bud_dha__/status/1984847940960337990" target="_blank" rel="noopener nofollow">
+        <span class="d-badge mid">기본기</span>
         <span class="num">4.5</span>
         <div class="title">돈이 되려면 갖춰야 하는 3가지 조건</div>
         <div class="desc">11/02</div>
       </a>
       
       <a class="card" href="https://x.com/bud_dha__/status/1984898020027011474" target="_blank" rel="noopener nofollow">
+        <span class="d-badge easy">입문</span>
         <span class="num">5</span>
         <div class="title">스테이블 코인: 디지털 달러의 등장</div>
         <div class="desc">11/02</div>
       </a>
 
       <a class="card" href="https://x.com/bud_dha__/status/1985310526029918262" target="_blank" rel="noopener nofollow">
+        <span class="d-badge mid">기본기</span>
         <span class="num">6</span>
         <div class="title">RWA시장</div>
         <div class="desc">11/03</div>
       </a>
 
-        <a class="card" href="https://x.com/bud_dha__/status/1985316238713852396" target="_blank" rel="noopener nofollow">
+      <a class="card" href="https://x.com/bud_dha__/status/1985316238713852396" target="_blank" rel="noopener nofollow">
+        <span class="d-badge core">심화</span>
         <span class="num">6.5</span>
         <div class="title">★RWA로 바뀌는 금융판 미래 ★</div>
         <div class="desc">11/03</div>
       </a>
 
       <a class="card" href="https://x.com/bud_dha__/status/1986099767756427363" target="_blank" rel="noopener nofollow">
+        <span class="d-badge hard">심화</span>
         <span class="num">7</span>
         <div class="title">블록체인 구조</div>
         <div class="desc">11/06</div>
       </a>
 
       <a class="card" href="https://x.com/bud_dha__/status/1986247812502462838" target="_blank" rel="noopener nofollow">
-        <span class="num">7</span>
+        <span class="d-badge core">핵심 심화</span>
+        <span class="num">7.5</span>
         <div class="title">블록체인이 실제로 굴러가는 원리</div>
         <div class="desc">11/06</div>
       </a>
 
       <a class="card" href="https://x.com/your_handle/status/XXXXXXXXX" target="_blank" rel="noopener nofollow">
+        <span class="d-badge core">핵심 심화</span>
         <span class="num">8</span>
         <div class="title">블록체인의 확장성 트릴레마</div>
         <div class="desc">예정</div>
       </a>
 
       <a class="card" href="https://x.com/your_handle/status/XXXXXXXXX" target="_blank" rel="noopener nofollow">
+        <span class="d-badge mid">기본기</span>
         <span class="num">9</span>
         <div class="title">규제와 제도권</div>
         <div class="desc">예정</div>
       </a>
 
       <a class="card" href="https://x.com/your_handle/status/XXXXXXXXX" target="_blank" rel="noopener nofollow">
+        <span class="d-badge core">핵심 심화</span>
         <span class="num">10</span>
         <div class="title">AI와 Agentic DeFi</div>
         <div class="desc">예정</div>
       </a>
 
       <a class="card" href="https://x.com/your_handle/status/XXXXXXXXX" target="_blank" rel="noopener nofollow">
+        <span class="d-badge easy">입문</span>
         <span class="num">11</span>
         <div class="title">결론: 돈의 혁명</div>
         <div class="desc">예정</div>
