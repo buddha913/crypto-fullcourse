@@ -53,6 +53,8 @@
     :root[data-theme="light"] .item{background:#ffffffef}
     .item.clickable{cursor:pointer;transition:transform .12s ease, box-shadow .2s ease}
     .item.clickable:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.25)}
+    .item{ transition: border-color .15s ease, box-shadow .2s ease, transform .12s ease; }
+    .item:hover, .item:focus-within{ border-color:#E74C3C; box-shadow:0 0 0 2px rgba(231,76,60,.35) inset; }
     .badge{min-width:36px;height:28px;display:grid;place-items:center;border-radius:8px;background:rgba(200,169,255,.18);border:1px solid rgba(140,120,255,.4);font-weight:800;color:var(--accent)}
     .meta{color:var(--muted);font-size:12px;margin-top:2px}
     .actions{display:flex;gap:8px;margin-top:8px}
