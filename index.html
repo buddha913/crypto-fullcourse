@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>알아야 번다: 크립토 풀코스 — 대단원/파트 아코디언</title>
   <meta name="color-scheme" content="light dark" />
+
   <script>
     (function(){
       const saved = localStorage.getItem("theme");
@@ -12,6 +13,7 @@
       document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
     })();
   </script>
+
   <style>
     :root{ --easy:#4E8FFF; --mid:#FF9F3F; --hard:#E74C3C; --core:#9B59B6; --shadow:0 16px 40px rgba(7,5,16,.55); --glass: blur(10px) saturate(140%); }
     :root[data-theme="dark"]{ --bg:#0b0a14; --text:#ece7ff; --muted:#bcb2e6; --card:#151228CC; --card2:#1b1633; --border:#2b2350; --accent:#c8a9ff; }
@@ -47,15 +49,20 @@
     /* 아이템 카드 */
     .grid{display:grid;gap:12px}
     @media(min-width:760px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-    .item{display:flex;gap:10px;align-items:flex-start;padding:12px;background:rgba(0,0,0,.18);border:1px solid var(--border);border-radius:12px}
+    .item{display:flex;gap:10px;align-items:flex-start;padding:12px;background:rgba(0,0,0,.18);border:1px solid var(--border);border-radius:12px;position:relative}
     :root[data-theme="light"] .item{background:#ffffffef}
+    .item.clickable{cursor:pointer;transition:transform .12s ease, box-shadow .2s ease}
+    .item.clickable:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.25)}
     .badge{min-width:36px;height:28px;display:grid;place-items:center;border-radius:8px;background:rgba(200,169,255,.18);border:1px solid rgba(140,120,255,.4);font-weight:800;color:var(--accent)}
     .meta{color:var(--muted);font-size:12px;margin-top:2px}
     .actions{display:flex;gap:8px;margin-top:8px}
     .chip{font-size:12px;padding:6px 10px;border-radius:10px;background:#ffffff12;border:1px solid var(--border);text-decoration:none;color:inherit}
+    /* 작은 화면에선 '글 보기' 버튼 숨겨도 UX OK */
+    @media (hover:none){ .chip.view{display:none} }
 
+    /* 난이도 배지 */
     .d-badge{position:absolute;top:10px;right:10px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:800;color:#fff;box-shadow:0 6px 16px rgba(0,0,0,.25)}
-    .easy{background:var(--easy)}.mid{background:var(--mid)}.hard{background:var(--hard)}.core{background:var(--core)}
+    .d-easy{background:var(--easy)} .d-mid{background:var(--mid)} .d-hard{background:var(--hard)} .d-core{background:var(--core)}
 
     .hero{margin-top:18px;border:1px solid var(--border);border-radius:14px;padding:20px;background:linear-gradient(180deg,rgba(200,169,255,.10),transparent 45%),rgba(255,255,255,.06);display:flex;flex-direction:column;align-items:center;text-align:center;box-shadow:var(--shadow);backdrop-filter:var(--glass)}
     .hero img{width:120px;height:120px;border-radius:50%;object-fit:cover;box-shadow:0 18px 44px rgba(200,169,255,.28);margin-bottom:12px;border:2px solid rgba(200,169,255,.28)}
@@ -66,7 +73,7 @@
     <div class="wrap top">
       <div>
         <h1>알아야 번다: 크립토 풀코스 — 아코디언</h1>
-        <p class="subtitle">대단원 ▶ 파트 ▶ 글 카드 순서로 펼쳐짐ㅇㅇㅇ.</p>
+        <p class="subtitle">대단원 ▶ 파트 ▶ 글 카드 순서로 펼쳐집니다. (카드 전체 클릭 가능)</p>
       </div>
       <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙/☀️</button>
     </div>
@@ -81,27 +88,106 @@
 
     <!-- ============ 대단원 A ============ -->
     <details class="grand">
-      <summary>A — 입문·기본기 <span class="chev">▾</span></summary>
+      <summary>대단원 A — 입문·기본기 <span class="chev">▾</span></summary>
       <div class="block">
 
         <details class="part">
           <summary>Part 1 — 비트코인의 시작</summary>
           <div class="block grid">
-            <div class="item"><span class="badge">1</span><div><div style="font-weight:800">비트코인의 시작</div><div class="meta">10/30 • 입문</div><div style="margin-top:6px">사토시, P2P 전자화폐, 왜 태어났는가?</div><div class="actions"><a class="chip" href="https://x.com/bud_dha__/status/1983944064056881553" target="_blank" rel="noopener">글 보기</a></div></div></div>
-            <div class="item"><span class="badge">1.5</span><div><div style="font-weight:800">세상에서 제일 이상한 돈</div><div class="meta">10/31 • 입문</div><div style="margin-top:6px">돈의 본질, 희소성, 주체 이동</div><div class="actions"><a class="chip" href="https://x.com/bud_dha__/status/1984049827207094752" target="_blank" rel="noopener">글 보기</a></div></div></div>
-            <div class="item"><span class="badge">2</span><div><div style="font-weight:800">발전과정</div><div class="meta">10/31 • 입문</div><div style="margin-top:6px">제네시스 블록, 난이도 조정, 반감기</div><div class="actions"><a class="chip" href="https://x.com/bud_dha__/status/1984277105551773887" target="_blank" rel="noopener">글 보기</a></div></div></div>
-            <div class="item"><span class="badge">2.5</span><div><div style="font-weight:800">세상을 바꾸려는 코드들의 전쟁</div><div class="meta">11/01 • 입문</div><div style="margin-top:6px">사토시 이후 포크, 이념과 구현</div><div class="actions"><a class="chip" href="https://x.com/bud_dha__/status/1984436807401115666" target="_blank" rel="noopener">글 보기</a></div></div></div>
-            <div class="item"><span class="badge">3</span><div><div style="font-weight:800">비트코인 말고도 수많은 코인들이 왜 생겼는가</div><div class="meta">11/01 • 입문</div><div style="margin-top:6px">스마트컨트랙트, 생태 확장</div><div class="actions"><a class="chip" href="https://x.com/bud_dha__/status/1984519274447213017" target="_blank" rel="noopener">글 보기</a></div></div></div>
-            <div class="item"><span class="badge">0</span><div><div style="font-weight:800">중간정리</div><div class="meta">11/02 • 입문</div><div style="margin-top:6px">핵심 키워드 리캡</div><div class="actions"><a class="chip" href="https://x.com/bud_dha__/status/1984751589492736090" target="_blank" rel="noopener">글 보기</a></div></div></div>
+            <div class="item">
+              <span class="badge">1</span>
+              <div>
+                <div style="font-weight:800">비트코인의 시작</div>
+                <div class="meta">10/30 • 입문</div>
+                <div style="margin-top:6px">사토시, P2P 전자화폐, 왜 태어났는가?</div>
+                <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1983944064056881553" target="_blank" rel="noopener">글 보기</a></div>
+              </div>
+            </div>
+
+            <div class="item">
+              <span class="badge">1.5</span>
+              <div>
+                <div style="font-weight:800">세상에서 제일 이상한 돈</div>
+                <div class="meta">10/31 • 입문</div>
+                <div style="margin-top:6px">돈의 본질, 희소성, 주체 이동</div>
+                <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984049827207094752" target="_blank" rel="noopener">글 보기</a></div>
+              </div>
+            </div>
+
+            <div class="item">
+              <span class="badge">2</span>
+              <div>
+                <div style="font-weight:800">발전과정</div>
+                <div class="meta">10/31 • 입문</div>
+                <div style="margin-top:6px">제네시스 블록, 난이도 조정, 반감기</div>
+                <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984277105551773887" target="_blank" rel="noopener">글 보기</a></div>
+              </div>
+            </div>
+
+            <div class="item">
+              <span class="badge">2.5</span>
+              <div>
+                <div style="font-weight:800">세상을 바꾸려는 코드들의 전쟁</div>
+                <div class="meta">11/01 • 입문</div>
+                <div style="margin-top:6px">사토시 이후 포크, 이념과 구현</div>
+                <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984436807401115666" target="_blank" rel="noopener">글 보기</a></div>
+              </div>
+            </div>
+
+            <div class="item">
+              <span class="badge">3</span>
+              <div>
+                <div style="font-weight:800">비트코인 말고도 수많은 코인들이 왜 생겼는가</div>
+                <div class="meta">11/01 • 입문</div>
+                <div style="margin-top:6px">스마트컨트랙트, 생태 확장</div>
+                <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984519274447213017" target="_blank" rel="noopener">글 보기</a></div>
+              </div>
+            </div>
+
+            <div class="item">
+              <span class="badge">0</span>
+              <div>
+                <div style="font-weight:800">중간정리</div>
+                <div class="meta">11/02 • 입문</div>
+                <div style="margin-top:6px">핵심 키워드 리캡</div>
+                <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984751589492736090" target="_blank" rel="noopener">글 보기</a></div>
+              </div>
+            </div>
           </div>
         </details>
 
         <details class="part">
           <summary>Part 2 — 금융의 재해석</summary>
           <div class="block grid">
-            <div class="item"><span class="badge">4</span><div><div style="font-weight:800">CeFi vs DeFi</div><div class="meta">11/02 • 기본기</div><div style="margin-top:6px">중앙화/탈중앙화 운영체제 비교</div><div class="actions"><a class="chip" href="https://x.com/bud_dha__/status/1984764121158717839" target="_blank" rel="noopener">글 보기</a></div></div></div>
-            <div class="item"><span class="badge">4.5</span><div><div style="font-weight:800">돈이 되려면 갖춰야 하는 3가지 조건</div><div class="meta">11/02 • 기본기</div><div style="margin-top:6px">교환, 가치저장, 회계단위</div><div class="actions"><a class="chip" href="https://x.com/bud_dha__/status/1984847940960337990" target="_blank" rel="noopener">글 보기</a></div></div></div>
-            <div class="item"><span class="badge">5</span><div><div style="font-weight:800">스테이블 코인: 디지털 달러의 등장</div><div class="meta">11/02 • 입문</div><div style="margin-top:6px">스테이블 1.0→2.0, 금리 온체인</div><div class="actions"><a class="chip" href="https://x.com/bud_dha__/status/1984898020027011474" target="_blank" rel="noopener">글 보기</a></div></div></div>
+            <div class="item">
+              <span class="badge">4</span>
+              <div>
+                <div style="font-weight:800">CeFi vs DeFi</div>
+                <div class="meta">11/02 • 기본기</div>
+                <div style="margin-top:6px">중앙화/탈중앙화 운영체제 비교</div>
+                <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984764121158717839" target="_blank" rel="noopener">글 보기</a></div>
+              </div>
+            </div>
+
+            <div class="item">
+              <span class="badge">4.5</span>
+              <div>
+                <div style="font-weight:800">돈이 되려면 갖춰야 하는 3가지 조건</div>
+                <div class="meta">11/02 • 기본기</div>
+                <div style="margin-top:6px">교환, 가치저장, 회계단위</div>
+                <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984847940960337990" target="_blank" rel="noopener">글 보기</a></div>
+              </div>
+            </div>
+
+            <div class="item">
+              <span class="badge">5</span>
+              <div>
+                <div style="font-weight:800">스테이블 코인: 디지털 달러의 등장</div>
+                <div class="meta">11/02 • 입문</div>
+                <div style="margin-top:6px">스테이블 1.0→2.0, 금리 온체인</div>
+                <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984898020027011474" target="_blank" rel="noopener">글 보기</a></div>
+              </div>
+            </div>
           </div>
         </details>
 
@@ -110,18 +196,80 @@
 
     <!-- ============ 대단원 B ============ -->
     <details class="grand">
-      <summary>B — RWA·구조 <span class="chev">▾</span></summary>
+      <summary>대단원 B — RWA·구조 <span class="chev">▾</span></summary>
       <div class="block">
         <details class="part">
           <summary>Part 3 — RWA & 블록체인 구조</summary>
           <div class="block grid">
-            <div class="item"><span class="badge">6</span><div><div style="font-weight:800">RWA시장</div><div class="meta">11/03 • 심화</div><div style="margin-top:6px">현실자산 온체인화, 유동성 재구성</div><div class="actions"><a class="chip" href="https://x.com/bud_dha__/status/1985310526029918262" target="_blank" rel="noopener">글 보기</a></div></div></div>
-            <div class="item"><span class="badge">6.5</span><div><div style="font-weight:800">★RWA로 바뀌는 금융판 미래★</div><div class="meta">11/03 • 핵심 심화</div><div style="margin-top:6px">권력 이동: 기관→개인</div><div class="actions"><a class="chip" href="https://x.com/bud_dha__/status/1985316238713852396" target="_blank" rel="noopener">글 보기</a></div></div></div>
-            <div class="item"><span class="badge">7</span><div><div style="font-weight:800">블록체인 구조</div><div class="meta">11/06 • 기본기</div><div style="margin-top:6px">합의/데이터구조/암호 보안</div><div class="actions"><a class="chip" href="https://x.com/bud_dha__/status/1986099767756427363" target="_blank" rel="noopener">글 보기</a></div></div></div>
-            <div class="item"><span class="badge">7.5</span><div><div style="font-weight:800">블록체인이 실제로 굴러가는 원리</div><div class="meta">11/06 • 심화</div><div style="margin-top:6px">누가 기록/어떻게 합의?</div><div class="actions"><a class="chip" href="https://x.com/bud_dha__/status/1986247812502462838" target="_blank" rel="noopener">글 보기</a></div></div></div>
-            <div class="item"><span class="badge">8</span><div><div style="font-weight:800">확장성 트릴레마</div><div class="meta">11/08 • 기본기</div><div style="margin-top:6px">탈중앙·보안·확장성의 딜레마</div><div class="actions"><a class="chip" href="https://x.com/bud_dha__/status/1986826535878431145" target="_blank" rel="noopener">글 보기</a></div></div></div>
-            <div class="item"><span class="badge">8.5</span><div><div style="font-weight:800">왜 트릴레마가 생기냐</div><div class="meta">11/08 • 핵심 심화</div><div style="margin-top:6px">근본 원인 뜯어보기</div><div class="actions"><a class="chip" href="https://x.com/bud_dha__/status/1986841537343590661" target="_blank" rel="noopener">글 보기</a></div></div></div>
-            <div class="item"><span class="badge">8.5+</span><div><div style="font-weight:800">L1/L2 해결의 시작</div><div class="meta">11/09 • 핵심 심화</div><div style="margin-top:6px">샤딩/롤업/병렬화 등</div><div class="actions"><a class="chip" href="https://x.com/bud_dha__/status/1987400762004283818" target="_blank" rel="noopener">글 보기</a></div></div></div>
+            <div class="item">
+              <span class="badge">6</span>
+              <div>
+                <div style="font-weight:800">RWA시장</div>
+                <div class="meta">11/03 • 심화</div>
+                <div style="margin-top:6px">현실자산 온체인화, 유동성 재구성</div>
+                <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1985310526029918262" target="_blank" rel="noopener">글 보기</a></div>
+              </div>
+            </div>
+
+            <div class="item">
+              <span class="badge">6.5</span>
+              <div>
+                <div style="font-weight:800">★RWA로 바뀌는 금융판 미래★</div>
+                <div class="meta">11/03 • 핵심 심화</div>
+                <div style="margin-top:6px">권력 이동: 기관→개인</div>
+                <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1985316238713852396" target="_blank" rel="noopener">글 보기</a></div>
+              </div>
+            </div>
+
+            <div class="item">
+              <span class="badge">7</span>
+              <div>
+                <div style="font-weight:800">블록체인 구조</div>
+                <div class="meta">11/06 • 기본기</div>
+                <div style="margin-top:6px">합의/데이터구조/암호 보안</div>
+                <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1986099767756427363" target="_blank" rel="noopener">글 보기</a></div>
+              </div>
+            </div>
+
+            <div class="item">
+              <span class="badge">7.5</span>
+              <div>
+                <div style="font-weight:800">블록체인이 실제로 굴러가는 원리</div>
+                <div class="meta">11/06 • 심화</div>
+                <div style="margin-top:6px">누가 기록/어떻게 합의?</div>
+                <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1986247812502462838" target="_blank" rel="noopener">글 보기</a></div>
+              </div>
+            </div>
+
+            <div class="item">
+              <span class="badge">8</span>
+              <div>
+                <div style="font-weight:800">확장성 트릴레마</div>
+                <div class="meta">11/08 • 기본기</div>
+                <div style="margin-top:6px">탈중앙·보안·확장성의 딜레마</div>
+                <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1986826535878431145" target="_blank" rel="noopener">글 보기</a></div>
+              </div>
+            </div>
+
+            <div class="item">
+              <span class="badge">8.5</span>
+              <div>
+                <div style="font-weight:800">왜 트릴레마가 생기냐</div>
+                <div class="meta">11/08 • 핵심 심화</div>
+                <div style="margin-top:6px">근본 원인 뜯어보기</div>
+                <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1986841537343590661" target="_blank" rel="noopener">글 보기</a></div>
+              </div>
+            </div>
+
+            <div class="item">
+              <span class="badge">8.5+</span>
+              <div>
+                <div style="font-weight:800">L1/L2 해결의 시작</div>
+                <div class="meta">11/09 • 핵심 심화</div>
+                <div style="margin-top:6px">샤딩/롤업/병렬화 등</div>
+                <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1987400762004283818" target="_blank" rel="noopener">글 보기</a></div>
+              </div>
+            </div>
           </div>
         </details>
       </div>
@@ -129,16 +277,60 @@
 
     <!-- ============ 대단원 C ============ -->
     <details class="grand">
-      <summary>C — 규제·AI·엔드게임 <span class="chev">▾</span></summary>
+      <summary>대단원 C — 규제·AI·엔드게임 <span class="chev">▾</span></summary>
       <div class="block">
         <details class="part">
           <summary>Part 4 — 규제와 제도권 & AI</summary>
           <div class="block grid">
-            <div class="item"><span class="badge">9</span><div><div style="font-weight:800">규제와 제도권</div><div class="meta">11/08 • 심화</div><div style="margin-top:6px">코드가 법이 되는 길</div><div class="actions"><a class="chip" href="https://x.com/bud_dha__/status/1986956349465559504" target="_blank" rel="noopener">글 보기</a></div></div></div>
-            <div class="item"><span class="badge">9.5</span><div><div style="font-weight:800">각 나라의 규제 스타일</div><div class="meta">11/08 • 기본기</div><div style="margin-top:6px">미국/EU/한국/중국</div><div class="actions"><a class="chip" href="https://x.com/bud_dha__/status/1986966581692539131" target="_blank" rel="noopener">글 보기</a></div></div></div>
-            <div class="item"><span class="badge">9.5+</span><div><div style="font-weight:800">규제가 Web3 기술과 손잡는 순간</div><div class="meta">11/08 • 심화</div><div style="margin-top:6px">ZK/MPC/VC, 합법×프라이버시</div><div class="actions"><a class="chip" href="https://x.com/bud_dha__/status/1987068825313898601" target="_blank" rel="noopener">글 보기</a></div></div></div>
-            <div class="item"><span class="badge">10</span><div><div style="font-weight:800">AI와 Agentic DeFi</div><div class="meta">11/09 • 심화</div><div style="margin-top:6px">자율 에이전트가 운용하는 금융</div><div class="actions"><a class="chip" href="https://x.com/bud_dha__/status/1987350934188663191" target="_blank" rel="noopener">글 보기</a></div></div></div>
-            <div class="item"><span class="badge">11</span><div><div style="font-weight:800">결론: 돈의 혁명</div><div class="meta">11/10 • 입문</div><div style="margin-top:6px">돈의 룰을 만드는 쪽으로</div><div class="actions"><a class="chip" href="https://x.com/bud_dha__/status/1987717916020891941" target="_blank" rel="noopener">글 보기</a></div></div></div>
+            <div class="item">
+              <span class="badge">9</span>
+              <div>
+                <div style="font-weight:800">규제와 제도권</div>
+                <div class="meta">11/08 • 심화</div>
+                <div style="margin-top:6px">코드가 법이 되는 길</div>
+                <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1986956349465559504" target="_blank" rel="noopener">글 보기</a></div>
+              </div>
+            </div>
+
+            <div class="item">
+              <span class="badge">9.5</span>
+              <div>
+                <div style="font-weight:800">각 나라의 규제 스타일</div>
+                <div class="meta">11/08 • 기본기</div>
+                <div style="margin-top:6px">미국/EU/한국/중국</div>
+                <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1986966581692539131" target="_blank" rel="noopener">글 보기</a></div>
+              </div>
+            </div>
+
+            <div class="item">
+              <span class="badge">9.5+</span>
+              <div>
+                <div style="font-weight:800">규제가 Web3 기술과 손잡는 순간</div>
+                <div class="meta">11/08 • 심화</div>
+                <div style="margin-top:6px">ZK/MPC/VC, 합법×프라이버시</div>
+                <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1987068825313898601" target="_blank" rel="noopener">글 보기</a></div>
+              </div>
+            </div>
+
+            <div class="item">
+              <span class="badge">10</span>
+              <div>
+                <div style="font-weight:800">AI와 Agentic DeFi</div>
+                <div class="meta">11/09 • 심화</div>
+                <div style="margin-top:6px">자율 에이전트가 운용하는 금융</div>
+                <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1987350934188663191" target="_blank" rel="noopener">글 보기</a></div>
+              </div>
+            </div>
+
+            <div class="item">
+              <span class="badge">11</span>
+              <div>
+                <div style="font-weight:800">결론: 돈의 혁명</div>
+                <div class="meta">11/10 • 입문</div>
+                <div style="margin-top:6px">돈의 룰을 만드는 쪽으로</div>
+                <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1987717916020891941" target="_blank" rel="noopener">글 보기</a></div>
+              </div>
+            </div>
           </div>
         </details>
       </div>
@@ -147,6 +339,7 @@
 
   <script>
     (function(){
+      // 테마 토글
       const btn = document.getElementById('themeToggle');
       const root = document.documentElement;
       btn.addEventListener('click', ()=>{
@@ -154,6 +347,35 @@
         const next = now === 'dark' ? 'light' : 'dark';
         root.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
+      });
+
+      // 카드 전체 클릭 + 난이도 배지 자동 생성
+      function levelToClass(text){
+        if(/핵심\s*심화|core/i.test(text)) return ['핵심 심화','d-core'];
+        if(/심화|hard/i.test(text))        return ['심화','d-hard'];
+        if(/기본기|mid/i.test(text))       return ['기본기','d-mid'];
+        if(/입문|easy/i.test(text))        return ['입문','d-easy'];
+        return null;
+      }
+      document.querySelectorAll('.item').forEach((card)=>{
+        const link = card.querySelector('.actions a[href]');
+        if(link){
+          card.classList.add('clickable');
+          card.addEventListener('click', (e)=>{
+            if(e.target.closest('.actions')) return; // 버튼 클릭은 기본 동작
+            window.open(link.getAttribute('href'), '_blank', 'noopener');
+          });
+        }
+        const meta = card.querySelector('.meta');
+        if(meta){
+          const m = levelToClass(meta.textContent);
+          if(m){
+            const badge = document.createElement('span');
+            badge.className = 'd-badge ' + m[1];
+            badge.textContent = m[0];
+            card.appendChild(badge);
+          }
+        }
       });
     })();
   </script>
