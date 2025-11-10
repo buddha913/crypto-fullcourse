@@ -15,7 +15,25 @@
   <style>
     :root{ --easy:#4E8FFF; --mid:#FF9F3F; --hard:#E74C3C; --core:#9B59B6; --shadow:0 16px 40px rgba(7,5,16,.55); --glass: blur(10px) saturate(140%); }
     :root[data-theme="dark"]{ --bg:#0b0a14; --text:#ece7ff; --muted:#bcb2e6; --card:#151228CC; --card2:#1b1633; --border:#2b2350; --accent:#c8a9ff; }
-    :root[data-theme="light"]{ --bg:#f2efff; --text:#2a1c4a; --muted:#675d90; --card:#ffffffE6; --card2:#ffffff; --border:#e6e0f7; --accent:#7b61ff; --shadow:0 16px 40px rgba(80,60,180,.15); }
+    :root[data-theme="light"]{
+  /* 배경/텍스트 톤 */
+  --bg:#f8f6ff;
+  --text:#2a2545;
+  --muted:#7a6fa8;
+
+  /* 카드/보더 */
+  --card: rgba(255,255,255,.65);
+  --card2:#ffffff;
+  --border: rgba(120,100,200,.28);
+
+  /* 포인트 컬러 */
+  --accent:#8F5CD6;
+
+  /* 효과 */
+  --glass: blur(10px) saturate(160%);
+  --shadow: 0 12px 28px rgba(80,60,140,.18);
+}
+
     *{box-sizing:border-box}
     html,body{height:100%}
     body{margin:0;min-height:100svh;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,"Apple SD Gothic Neo","Noto Sans KR",Inter,sans-serif}
