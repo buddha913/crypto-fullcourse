@@ -13,102 +13,211 @@
     })();
   </script>
   <style>
-    :root{ --easy:#4E8FFF; --mid:#FF9F3F; --hard:#E74C3C; --core:#9B59B6; --shadow:0 16px 40px rgba(7,5,16,.55); --glass: blur(10px) saturate(140%); }
-    :root[data-theme="dark"]{ --bg:#0b0a14; --text:#ece7ff; --muted:#bcb2e6; --card:#151228CC; --card2:#1b1633; --border:#2b2350; --accent:#c8a9ff; }
-    :root[data-theme="light"]{  /* 배경/텍스트 톤 */
-  --bg:#f8f6ff;
-  --text:#2a2545;
-  --muted:#7a6fa8;
-
-  /* 카드/보더 */
-  --card: rgba(255,255,255,.65);
-  --card2:#ffffff;
-  --border: rgba(120,100,200,.28);
-
-  /* 포인트 컬러 */
-  --accent:#8F5CD6;
-
-  /* 효과 */
-  --glass: blur(10px) saturate(160%);
-  --shadow: 0 12px 28px rgba(80,60,140,.18);
-}
+    :root{
+      --easy:#4E8FFF;
+      --mid:#FF9F3F;
+      --hard:#E74C3C;
+      --core:#9B59B6;
+      --shadow:0 16px 40px rgba(7,5,16,.55);
+      --glass: blur(10px) saturate(140%);
+    }
+    :root[data-theme="dark"]{
+      --bg:#0b0a14;
+      --text:#ece7ff;
+      --muted:#bcb2e6;
+      --card:#151228CC;
+      --card2:#1b1633;
+      --border:#2b2350;
+      --accent:#c8a9ff;
+    }
+    :root[data-theme="light"]{
+      --bg:#f8f6ff;
+      --text:#2a2545;
+      --muted:#7a6fa8;
+      --card: rgba(255,255,255,.65);
+      --card2:#ffffff;
+      --border: rgba(120,100,200,.28);
+      --accent:#8F5CD6;
+      --glass: blur(10px) saturate(160%);
+      --shadow: 0 12px 28px rgba(80,60,140,.18);
+    }
 
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;min-height:100svh;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,"Apple SD Gothic Neo","Noto Sans KR",Inter,sans-serif}
+    body{
+      margin:0;
+      min-height:100svh;
+      background:var(--bg);
+      color:var(--text);
+      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,"Apple SD Gothic Neo","Noto Sans KR",Inter,sans-serif;
+    }
 
-    header{position:sticky;top:0;z-index:10;backdrop-filter:var(--glass);-webkit-backdrop-filter:var(--glass);background:linear-gradient(180deg,rgba(18,15,31,.75),rgba(18,15,31,0));border-bottom:1px solid var(--border);padding:18px 20px}
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter:var(--glass);
+      -webkit-backdrop-filter:var(--glass);
+      background:linear-gradient(180deg,rgba(18,15,31,.75),rgba(18,15,31,0));
+      border-bottom:1px solid var(--border);
+      padding:18px 20px;
+    }
     .wrap{max-width:1080px;margin:0 auto;padding:24px}
     .top{display:flex;align-items:center;justify-content:space-between}
     h1{margin:0;font-size:clamp(22px,3vw,32px)}
     .subtitle{color:var(--muted);margin-top:6px;font-size:clamp(13px,1.6vw,16px)}
-    .theme-toggle{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border:1px solid var(--border);border-radius:999px;background:var(--card);color:var(--text);cursor:pointer;font-weight:700}
+    .theme-toggle{
+      display:inline-flex;align-items:center;gap:6px;
+      padding:8px 12px;border:1px solid var(--border);
+      border-radius:999px;background:var(--card);
+      color:var(--text);cursor:pointer;font-weight:700;
+    }
     .theme-toggle:hover{border-color:var(--accent)}
 
     /* 히어로 */
-    .hero{margin-top:18px;border:1px solid var(--border);border-radius:14px;padding:20px;background:linear-gradient(180deg,rgba(200,169,255,.10),transparent 45%),rgba(255,255,255,.06);display:flex;flex-direction:column;align-items:center;text-align:center;box-shadow:var(--shadow);backdrop-filter:var(--glass)}
-    .hero img{width:120px;height:120px;border-radius:50%;object-fit:cover;box-shadow:0 18px 44px rgba(200,169,255,.28);margin-bottom:12px;border:2px solid rgba(200,169,255,.28)}
-
-    /* 카드 그리드 */
-    .grid{display:grid;gap:12px;margin-top:16px}
-    @media(min-width:760px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-    .item{display:flex;gap:10px;align-items:flex-start;padding:12px;background:var(--card2);border:1px solid var(--border);border-radius:12px;position:relative}
-    :root[data-theme="light"] .item{background:#ffffffef}
-    .item.clickable{cursor:pointer;transition:transform .12s ease, box-shadow .2s ease}
-    .item.clickable:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.25)}
-    .item{transition:border-color .15s ease, box-shadow .2s ease, transform .12s ease}
-    /* ⛔️ 이 빨간 테두리/인셋 효과는 그대로 유지 */
-    .item:hover,.item:focus-within{border-color:#E74C3C;box-shadow:0 0 0 2px rgba(231,76,60,.35) inset}
-
-    .badge{min-width:36px;height:28px;display:grid;place-items:center;border-radius:8px;background:rgba(200,169,255,.18);border:1px solid rgba(140,120,255,.4);font-weight:800;color:var(--accent)}
-    .meta{color:var(--muted);font-size:12px;margin-top:2px}
-    .actions{display:flex;gap:8px;margin-top:8px}
-    .chip{font-size:12px;padding:6px 10px;border-radius:10px;background:#ffffff12;border:1px solid var(--border);text-decoration:none;color:inherit}
-    @media (hover:none){ .chip.view{display:none} }
-
-    /* 난이도 배지 */
-    .d-badge{position:absolute;top:10px;right:10px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:800;color:#fff;box-shadow:0 6px 16px rgba(0,0,0,.25)}
-    .d-easy{background:var(--easy)} .d-mid{background:var(--mid)} .d-hard{background:var(--hard)} .d-core{background:var(--core)}
-
-    /* ---- ADD: Galaxy ambient layers ---- */
-    .bg{position:fixed;inset:0;z-index:-3;pointer-events:none;background:
-      radial-gradient(1200px 800px at 20% -10%, #3b2b68 20%, transparent 60%),
-      radial-gradient(1000px 700px at 80% 10%, #1e1b4b 15%, transparent 55%),
-      radial-gradient(800px 600px at 50% 120%, #2a1842 10%, var(--bg) 70%);
+    .hero{
+      margin-top:18px;border:1px solid var(--border);border-radius:14px;
+      padding:20px;background:linear-gradient(180deg,rgba(200,169,255,.10),transparent 45%),rgba(255,255,255,.06);
+      display:flex;flex-direction:column;align-items:center;text-align:center;
+      box-shadow:var(--shadow);backdrop-filter:var(--glass);
     }
-    .stars{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.45;mix-blend:screen;background-image:
-      radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.35) 50%, transparent 51%),
-      radial-gradient(1.5px 1.5px at 70% 20%, rgba(255,255,255,.25) 50%, transparent 51%),
-      radial-gradient(1.5px 1.5px at 40% 70%, rgba(255,255,255,.20) 50%, transparent 51%),
-      radial-gradient(1.5px 1.5px at 85% 65%, rgba(255,255,255,.18) 50%, transparent 51%),
-      radial-gradient(1.5px 1.5px at 15% 85%, rgba(255,255,255,.22) 50%, transparent 51%);
+    .hero img{
+      width:120px;height:120px;border-radius:50%;object-fit:cover;
+      box-shadow:0 18px 44px rgba(200,169,255,.28);
+      margin-bottom:12px;border:2px solid rgba(200,169,255,.28);
+    }
+
+    /* Galaxy ambient */
+    .bg{
+      position:fixed;inset:0;z-index:-3;pointer-events:none;
+      background:
+        radial-gradient(1200px 800px at 20% -10%, #3b2b68 20%, transparent 60%),
+        radial-gradient(1000px 700px at 80% 10%, #1e1b4b 15%, transparent 55%),
+        radial-gradient(800px 600px at 50% 120%, #2a1842 10%, var(--bg) 70%);
+    }
+    .stars{
+      position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.45;mix-blend:screen;
+      background-image:
+        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.35) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 70% 20%, rgba(255,255,255,.25) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 40% 70%, rgba(255,255,255,.20) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 85% 65%, rgba(255,255,255,.18) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 15% 85%, rgba(255,255,255,.22) 50%, transparent 51%);
       background-repeat:no-repeat;
     }
-    .vignette{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(60% 60% at 50% 40%, transparent 30%, rgba(3,3,8,.6) 85%)}
+    .vignette{
+      position:fixed;inset:0;z-index:-1;pointer-events:none;
+      background:radial-gradient(60% 60% at 50% 40%, transparent 30%, rgba(3,3,8,.6) 85%);
+    }
 
-    /* ---- ADD: Neon border (per-card) — 빨간 테두리와 공존 ---- */
+    /* 대단원(챕터) */
+    .chapter{
+      margin-top:24px;
+      border-radius:16px;
+      border:1px solid var(--border);
+      background:rgba(5,4,20,.9);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    :root[data-theme="light"] .chapter{
+      background:rgba(255,255,255,.92);
+    }
+    .chapter-header{
+      width:100%;border:0;background:transparent;
+      padding:12px 16px;display:flex;align-items:center;gap:8px;
+      cursor:pointer;color:var(--text);
+    }
+    .chapter-title{
+      font-weight:800;font-size:15px;
+      display:flex;align-items:center;gap:6px;
+    }
+    .chapter-icon{
+      width:16px;height:16px;border-radius:4px;
+      background:conic-gradient(from 180deg,#7c3aed,#22c55e,#eab308,#ec4899,#7c3aed);
+    }
+    .chapter-progress{
+      margin-left:auto;font-size:13px;color:var(--muted);
+      white-space:nowrap;
+    }
+    .chapter-toggle-label{
+      font-size:12px;color:var(--muted);margin-left:8px;
+    }
+    .chapter-arrow{
+      margin-left:4px;font-size:14px;transition:transform .18s ease;
+    }
+    .chapter.collapsed .chapter-arrow{transform:rotate(-90deg);}
+    .chapter-body{
+      padding:12px 14px 16px;
+      border-top:1px solid var(--border);
+    }
+    .chapter.collapsed .chapter-body{display:none;}
+
+    /* 카드 그리드 */
+    .grid{display:grid;gap:12px;margin-top:0}
+    @media(min-width:760px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+    .item{
+      display:flex;gap:10px;align-items:flex-start;
+      padding:12px;background:var(--card2);
+      border:1px solid var(--border);border-radius:12px;
+      position:relative;transition:border-color .15s ease, box-shadow .2s ease, transform .12s ease;
+    }
+    :root[data-theme="light"] .item{background:#ffffffef}
+    .item.clickable{cursor:pointer}
+    .item.clickable:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.25)}
+    .item:hover,.item:focus-within{border-color:#E74C3C;box-shadow:0 0 0 2px rgba(231,76,60,.35) inset}
+
+    .badge{
+      min-width:36px;height:28px;display:grid;place-items:center;
+      border-radius:8px;background:rgba(200,169,255,.18);
+      border:1px solid rgba(140,120,255,.4);
+      font-weight:800;color:var(--accent);
+    }
+    .meta{color:var(--muted);font-size:12px;margin-top:2px}
+    .actions{display:flex;gap:8px;margin-top:8px}
+    .chip{
+      font-size:12px;padding:6px 10px;border-radius:10px;
+      background:#ffffff12;border:1px solid var(--border);
+      text-decoration:none;color:inherit;
+    }
+    @media (hover:none){ .chip.view{display:none} }
+
+    /* 카드 하단 라인 */
+    .rule{
+      height:1px;width:100%;margin:16px 0 0;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+      opacity:0;transition:opacity .25s ease;
+    }
+    .item:hover .rule{opacity:1}
+
+    /* Neon border */
     .item::before{
-      content:""; position:absolute; inset:-1px; border-radius:12px; z-index:-1;
+      content:"";position:absolute;inset:-1px;border-radius:12px;z-index:-1;
       background: linear-gradient(135deg, var(--g1, transparent), var(--g2, transparent));
-      filter: blur(7px); opacity:.62; transition:opacity .2s ease, filter .2s ease;
+      filter: blur(7px);opacity:.62;transition:opacity .2s ease, filter .2s ease;
     }
     .item::after{
-      content:""; position:absolute; inset:-80px; border-radius:22px; pointer-events:none;
+      content:"";position:absolute;inset:-80px;border-radius:22px;pointer-events:none;
       background: radial-gradient(360px 170px at 22% 18%, rgba(255,255,255,.18), transparent 60%);
       opacity:.20;
     }
     .item:hover::before{ opacity:.9; filter:blur(9px) }
 
-    /* 카드 하단 라인 */
-    .rule{height:1px;width:100%;margin:16px 0 0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);opacity:0;transition:opacity .25s ease}
-    .item:hover .rule{opacity:1}
-
-    /* 아이콘 (인라인 SVG) */
-    .icon{ width:16px; height:16px; opacity:.9 }
+    /* 읽음 토글 버튼 */
+    .read-toggle{
+      position:absolute;right:8px;bottom:6px;
+      padding:3px 9px;border-radius:999px;font-size:11px;
+      border:1px solid var(--border);
+      background:rgba(15,23,42,.85);color:var(--muted);
+      backdrop-filter:var(--glass);-webkit-backdrop-filter:var(--glass);
+      cursor:pointer;
+    }
+    .read-toggle.read{
+      border-color:#22c55e;color:#bbf7d0;background:rgba(22,163,74,.18);
+    }
   </style>
 </head>
 <body>
-  <!-- ADD: Galaxy layers -->
   <div class="bg"></div>
   <div class="stars"></div>
   <div class="vignette"></div>
@@ -117,7 +226,7 @@
     <div class="wrap top">
       <div>
         <h1>알아야 번다: 크립토 풀코스</h1>
-        <p class="subtitle">목차를 클릭하면 각 항목의 X(트위터) 글로 이동합니다.</p>
+        <p class="subtitle">카드를 클릭하면 트윗으로 이동 · 오른쪽 아래는 ‘👀 아직 안 봄 / ✅ 봄’ 체크 · 위 바를 눌러 카드 전체 접기/펼치기.</p>
       </div>
       <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙/☀️</button>
     </div>
@@ -132,222 +241,255 @@
       <p class="subtitle" style="margin-top:6px">비트코인 → DeFi → RWA → L1/L2 → 트릴레마 → 규제 → AI 에이전트까지, 한 페이지에서.</p>
     </section>
 
-    <!-- 단원/파트 제거: 카드 일괄 리스트 -->
-    <div class="grid">
-      <!-- 각 카드에 그라데 색만 지정 (빨간 테두리는 기존 hover가 담당) -->
-      <div class="item" style="--g1:#9b8cff; --g2:#5b3cff">
-        <span class="badge">1</span>
-        <div>
-          <div style="font-weight:800">비트코인의 시작</div>
-          <div class="meta">10/30 • 입문</div>
-          <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1983944064056881553" target="_blank" rel="noopener">bud_dha__</a></div>
-          <div class="rule"></div>
+    <!-- 📚 크립토 풀코스 대단원 -->
+    <section class="chapter" id="chapter-fullcourse">
+      <button class="chapter-header" id="chapter-header" type="button">
+        <div class="chapter-title">
+          <span class="chapter-icon"></span>
+          <span>크립토 풀코스</span>
+        </div>
+        <span class="chapter-progress" id="progressText">진행도 계산 중...</span>
+        <span class="chapter-toggle-label">목차 열기/접기</span>
+        <span class="chapter-arrow">▾</span>
+      </button>
+
+      <div class="chapter-body">
+        <div class="grid">
+          <!-- 카드들: data-part는 배지 번호랑 맞춰둠 -->
+          <div class="item" data-part="1" style="--g1:#9b8cff; --g2:#5b3cff">
+            <span class="badge">1</span>
+            <div>
+              <div style="font-weight:800">비트코인의 시작</div>
+              <div class="meta">10/30 • 입문</div>
+              <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1983944064056881553" target="_blank" rel="noopener">bud_dha__</a></div>
+              <div class="rule"></div>
+            </div>
+            <button class="read-toggle" type="button">👀 아직 안 봄</button>
+          </div>
+
+          <div class="item" data-part="1.5" style="--g1:#64d3ff; --g2:#4e8fff">
+            <span class="badge">1.5</span>
+            <div>
+              <div style="font-weight:800">세상에서 제일 이상한 돈</div>
+              <div class="meta">10/31 • 입문</div>
+              <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984049827207094752" target="_blank" rel="noopener">bud_dha__</a></div>
+              <div class="rule"></div>
+            </div>
+            <button class="read-toggle" type="button">👀 아직 안 봄</button>
+          </div>
+
+          <div class="item" data-part="2" style="--g1:#ffd966; --g2:#ffb347">
+            <span class="badge">2</span>
+            <div>
+              <div style="font-weight:800">발전과정</div>
+              <div class="meta">10/31 • 입문</div>
+              <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984277105551773887" target="_blank" rel="noopener">bud_dha__</a></div>
+              <div class="rule"></div>
+            </div>
+            <button class="read-toggle" type="button">👀 아직 안 봄</button>
+          </div>
+
+          <div class="item" data-part="2.5" style="--g1:#b8ff6a; --g2:#39e09b">
+            <span class="badge">2.5</span>
+            <div>
+              <div style="font-weight:800">세상을 바꾸려는 코드들의 전쟁</div>
+              <div class="meta">11/01 • 입문</div>
+              <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984436807401115666" target="_blank" rel="noopener">bud_dha__</a></div>
+              <div class="rule"></div>
+            </div>
+            <button class="read-toggle" type="button">👀 아직 안 봄</button>
+          </div>
+
+          <div class="item" data-part="3" style="--g1:#ff9f3f; --g2:#ff6f91">
+            <span class="badge">3</span>
+            <div>
+              <div style="font-weight:800">비트코인 말고도 수많은 코인들이 왜 생겼는가</div>
+              <div class="meta">11/01 • 입문</div>
+              <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984519274447213017" target="_blank" rel="noopener">bud_dha__</a></div>
+              <div class="rule"></div>
+            </div>
+            <button class="read-toggle" type="button">👀 아직 안 봄</button>
+          </div>
+
+          <div class="item" data-part="0" style="--g1:#ff8ad4; --g2:#b86bff">
+            <span class="badge">0</span>
+            <div>
+              <div style="font-weight:800">중간정리</div>
+              <div class="meta">11/02 • 입문</div>
+              <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984751589492736090" target="_blank" rel="noopener">bud_dha__</a></div>
+              <div class="rule"></div>
+            </div>
+            <button class="read-toggle" type="button">👀 아직 안 봄</button>
+          </div>
+
+          <div class="item" data-part="4" style="--g1:#64d3ff; --g2:#4e8fff">
+            <span class="badge">4</span>
+            <div>
+              <div style="font-weight:800">CeFi vs DeFi</div>
+              <div class="meta">11/02 • 기본기</div>
+              <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984764121158717839" target="_blank" rel="noopener">bud_dha__</a></div>
+              <div class="rule"></div>
+            </div>
+            <button class="read-toggle" type="button">👀 아직 안 봄</button>
+          </div>
+
+          <div class="item" data-part="4.5" style="--g1:#ffd966; --g2:#ffb347">
+            <span class="badge">4.5</span>
+            <div>
+              <div style="font-weight:800">돈이 되려면 갖춰야 하는 3가지 조건</div>
+              <div class="meta">11/02 • 기본기</div>
+              <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984847940960337990" target="_blank" rel="noopener">bud_dha__</a></div>
+              <div class="rule"></div>
+            </div>
+            <button class="read-toggle" type="button">👀 아직 안 봄</button>
+          </div>
+
+          <div class="item" data-part="5" style="--g1:#9b8cff; --g2:#5b3cff">
+            <span class="badge">5</span>
+            <div>
+              <div style="font-weight:800">스테이블 코인: 디지털 달러의 등장</div>
+              <div class="meta">11/02 • 입문</div>
+              <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984898020027011474" target="_blank" rel="noopener">bud_dha__</a></div>
+              <div class="rule"></div>
+            </div>
+            <button class="read-toggle" type="button">👀 아직 안 봄</button>
+          </div>
+
+          <div class="item" data-part="6" style="--g1:#b8ff6a; --g2:#39e09b">
+            <span class="badge">6</span>
+            <div>
+              <div style="font-weight:800">RWA시장</div>
+              <div class="meta">11/03 • 심화</div>
+              <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1985310526029918262" target="_blank" rel="noopener">bud_dha__</a></div>
+              <div class="rule"></div>
+            </div>
+            <button class="read-toggle" type="button">👀 아직 안 봄</button>
+          </div>
+
+          <div class="item" data-part="6.5" style="--g1:#ff9f3f; --g2:#ff6f91">
+            <span class="badge">6.5</span>
+            <div>
+              <div style="font-weight:800">★RWA로 바뀌는 금융판 미래★</div>
+              <div class="meta">11/03 • 핵심 심화</div>
+              <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1985316238713852396" target="_blank" rel="noopener">bud_dha__</a></div>
+              <div class="rule"></div>
+            </div>
+            <button class="read-toggle" type="button">👀 아직 안 봄</button>
+          </div>
+
+          <div class="item" data-part="7" style="--g1:#ffd966; --g2:#ffb347">
+            <span class="badge">7</span>
+            <div>
+              <div style="font-weight:800">블록체인 구조</div>
+              <div class="meta">11/06 • 기본기</div>
+              <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1986099767756427363" target="_blank" rel="noopener">bud_dha__</a></div>
+              <div class="rule"></div>
+            </div>
+            <button class="read-toggle" type="button">👀 아직 안 봄</button>
+          </div>
+
+          <div class="item" data-part="7.5" style="--g1:#9b8cff; --g2:#5b3cff">
+            <span class="badge">7.5</span>
+            <div>
+              <div style="font-weight:800">블록체인이 실제로 굴러가는 원리</div>
+              <div class="meta">11/06 • 심화</div>
+              <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1986247812502462838" target="_blank" rel="noopener">bud_dha__</a></div>
+              <div class="rule"></div>
+            </div>
+            <button class="read-toggle" type="button">👀 아직 안 봄</button>
+          </div>
+
+          <div class="item" data-part="8" style="--g1:#ff8ad4; --g2:#b86bff">
+            <span class="badge">8</span>
+            <div>
+              <div style="font-weight:800">확장성 트릴레마</div>
+              <div class="meta">11/08 • 기본기</div>
+              <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1986826535878431145" target="_blank" rel="noopener">bud_dha__</a></div>
+              <div class="rule"></div>
+            </div>
+            <button class="read-toggle" type="button">👀 아직 안 봄</button>
+          </div>
+
+          <div class="item" data-part="8.5" style="--g1:#b8ff6a; --g2:#39e09b">
+            <span class="badge">8.5</span>
+            <div>
+              <div style="font-weight:800">왜 트릴레마가 생기냐</div>
+              <div class="meta">11/08 • 핵심 심화</div>
+              <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1986841537343590661" target="_blank" rel="noopener">bud_dha__</a></div>
+              <div class="rule"></div>
+            </div>
+            <button class="read-toggle" type="button">👀 아직 안 봄</button>
+          </div>
+
+          <div class="item" data-part="8.5+" style="--g1:#64d3ff; --g2:#4e8fff">
+            <span class="badge">8.5+</span>
+            <div>
+              <div style="font-weight:800">L1/L2 해결의 시작</div>
+              <div class="meta">11/09 • 핵심 심화</div>
+              <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1987400762004283818" target="_blank" rel="noopener">bud_dha__</a></div>
+              <div class="rule"></div>
+            </div>
+            <button class="read-toggle" type="button">👀 아직 안 봄</button>
+          </div>
+
+          <div class="item" data-part="9" style="--g1:#ff9f3f; --g2:#ff6f91">
+            <span class="badge">9</span>
+            <div>
+              <div style="font-weight:800">규제와 제도권</div>
+              <div class="meta">11/08 • 심화</div>
+              <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1986956349465559504" target="_blank" rel="noopener">bud_dha__</a></div>
+              <div class="rule"></div>
+            </div>
+            <button class="read-toggle" type="button">👀 아직 안 봄</button>
+          </div>
+
+          <div class="item" data-part="9.5" style="--g1:#ffd966; --g2:#ffb347">
+            <span class="badge">9.5</span>
+            <div>
+              <div style="font-weight:800">각 나라의 규제 스타일</div>
+              <div class="meta">11/08 • 기본기</div>
+              <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1986966581692539131" target="_blank" rel="noopener">bud_dha__</a></div>
+              <div class="rule"></div>
+            </div>
+            <button class="read-toggle" type="button">👀 아직 안 봄</button>
+          </div>
+
+          <div class="item" data-part="9.5+" style="--g1:#9b8cff; --g2:#5b3cff">
+            <span class="badge">9.5+</span>
+            <div>
+              <div style="font-weight:800">규제가 Web3 기술과 손잡는 순간</div>
+              <div class="meta">11/08 • 심화</div>
+              <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1987068825313898601" target="_blank" rel="noopener">bud_dha__</a></div>
+              <div class="rule"></div>
+            </div>
+            <button class="read-toggle" type="button">👀 아직 안 봄</button>
+          </div>
+
+          <div class="item" data-part="10" style="--g1:#b8ff6a; --g2:#39e09b">
+            <span class="badge">10</span>
+            <div>
+              <div style="font-weight:800">AI와 Agentic DeFi</div>
+              <div class="meta">11/09 • 심화</div>
+              <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1987350934188663191" target="_blank" rel="noopener">bud_dha__</a></div>
+              <div class="rule"></div>
+            </div>
+            <button class="read-toggle" type="button">👀 아직 안 봄</button>
+          </div>
+
+          <div class="item" data-part="11" style="--g1:#ff8ad4; --g2:#b86bff">
+            <span class="badge">11</span>
+            <div>
+              <div style="font-weight:800">결론: 돈의 혁명</div>
+              <div class="meta">11/10 • 입문</div>
+              <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1987717916020891941" target="_blank" rel="noopener">bud_dha__</a></div>
+              <div class="rule"></div>
+            </div>
+            <button class="read-toggle" type="button">👀 아직 안 봄</button>
+          </div>
+
         </div>
       </div>
-
-      <div class="item" style="--g1:#64d3ff; --g2:#4e8fff">
-        <span class="badge">1.5</span>
-        <div>
-          <div style="font-weight:800">세상에서 제일 이상한 돈</div>
-          <div class="meta">10/31 • 입문</div>
-          <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984049827207094752" target="_blank" rel="noopener">bud_dha__</a></div>
-          <div class="rule"></div>
-        </div>
-      </div>
-
-      <div class="item" style="--g1:#ffd966; --g2:#ffb347">
-        <span class="badge">2</span>
-        <div>
-          <div style="font-weight:800">발전과정</div>
-          <div class="meta">10/31 • 입문</div>
-          <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984277105551773887" target="_blank" rel="noopener">bud_dha__</a></div>
-          <div class="rule"></div>
-        </div>
-      </div>
-
-      <div class="item" style="--g1:#b8ff6a; --g2:#39e09b">
-        <span class="badge">2.5</span>
-        <div>
-          <div style="font-weight:800">세상을 바꾸려는 코드들의 전쟁</div>
-          <div class="meta">11/01 • 입문</div>
-          <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984436807401115666" target="_blank" rel="noopener">bud_dha__</a></div>
-          <div class="rule"></div>
-        </div>
-      </div>
-
-      <div class="item" style="--g1:#ff9f3f; --g2:#ff6f91">
-        <span class="badge">3</span>
-        <div>
-          <div style="font-weight:800">비트코인 말고도 수많은 코인들이 왜 생겼는가</div>
-          <div class="meta">11/01 • 입문</div>
-          <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984519274447213017" target="_blank" rel="noopener">bud_dha__</a></div>
-          <div class="rule"></div>
-        </div>
-      </div>
-
-      <div class="item" style="--g1:#ff8ad4; --g2:#b86bff">
-        <span class="badge">0</span>
-        <div>
-          <div style="font-weight:800">중간정리</div>
-          <div class="meta">11/02 • 입문</div>
-          <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984751589492736090" target="_blank" rel="noopener">bud_dha__</a></div>
-          <div class="rule"></div>
-        </div>
-      </div>
-
-      <div class="item" style="--g1:#64d3ff; --g2:#4e8fff">
-        <span class="badge">4</span>
-        <div>
-          <div style="font-weight:800">CeFi vs DeFi</div>
-          <div class="meta">11/02 • 기본기</div>
-          <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984764121158717839" target="_blank" rel="noopener">bud_dha__</a></div>
-          <div class="rule"></div>
-        </div>
-      </div>
-
-      <div class="item" style="--g1:#ffd966; --g2:#ffb347">
-        <span class="badge">4.5</span>
-        <div>
-          <div style="font-weight:800">돈이 되려면 갖춰야 하는 3가지 조건</div>
-          <div class="meta">11/02 • 기본기</div>
-          <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984847940960337990" target="_blank" rel="noopener">bud_dha__</a></div>
-          <div class="rule"></div>
-        </div>
-      </div>
-
-      <div class="item" style="--g1:#9b8cff; --g2:#5b3cff">
-        <span class="badge">5</span>
-        <div>
-          <div style="font-weight:800">스테이블 코인: 디지털 달러의 등장</div>
-          <div class="meta">11/02 • 입문</div>
-          <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1984898020027011474" target="_blank" rel="noopener">bud_dha__</a></div>
-          <div class="rule"></div>
-        </div>
-      </div>
-
-      <!-- B: RWA/구조 -->
-      <div class="item" style="--g1:#b8ff6a; --g2:#39e09b">
-        <span class="badge">6</span>
-        <div>
-          <div style="font-weight:800">RWA시장</div>
-          <div class="meta">11/03 • 심화</div>
-          <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1985310526029918262" target="_blank" rel="noopener">bud_dha__</a></div>
-          <div class="rule"></div>
-        </div>
-      </div>
-
-      <div class="item" style="--g1:#ff9f3f; --g2:#ff6f91">
-        <span class="badge">6.5</span>
-        <div>
-          <div style="font-weight:800">★RWA로 바뀌는 금융판 미래★</div>
-          <div class="meta">11/03 • 핵심 심화</div>
-          <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1985316238713852396" target="_blank" rel="noopener">bud_dha__</a></div>
-          <div class="rule"></div>
-        </div>
-      </div>
-
-      <div class="item" style="--g1:#ffd966; --g2:#ffb347">
-        <span class="badge">7</span>
-        <div>
-          <div style="font-weight:800">블록체인 구조</div>
-          <div class="meta">11/06 • 기본기</div>
-          <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1986099767756427363" target="_blank" rel="noopener">bud_dha__</a></div>
-          <div class="rule"></div>
-        </div>
-      </div>
-
-      <div class="item" style="--g1:#9b8cff; --g2:#5b3cff">
-        <span class="badge">7.5</span>
-        <div>
-          <div style="font-weight:800">블록체인이 실제로 굴러가는 원리</div>
-          <div class="meta">11/06 • 심화</div>
-          <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1986247812502462838" target="_blank" rel="noopener">bud_dha__</a></div>
-          <div class="rule"></div>
-        </div>
-      </div>
-
-      <div class="item" style="--g1:#ff8ad4; --g2:#b86bff">
-        <span class="badge">8</span>
-        <div>
-          <div style="font-weight:800">확장성 트릴레마</div>
-          <div class="meta">11/08 • 기본기</div>
-          <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1986826535878431145" target="_blank" rel="noopener">bud_dha__</a></div>
-          <div class="rule"></div>
-        </div>
-      </div>
-
-      <div class="item" style="--g1:#b8ff6a; --g2:#39e09b">
-        <span class="badge">8.5</span>
-        <div>
-          <div style="font-weight:800">왜 트릴레마가 생기냐</div>
-          <div class="meta">11/08 • 핵심 심화</div>
-          <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1986841537343590661" target="_blank" rel="noopener">bud_dha__</a></div>
-          <div class="rule"></div>
-        </div>
-      </div>
-
-      <div class="item" style="--g1:#64d3ff; --g2:#4e8fff">
-        <span class="badge">8.5+</span>
-        <div>
-          <div style="font-weight:800">L1/L2 해결의 시작</div>
-          <div class="meta">11/09 • 핵심 심화</div>
-          <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1987400762004283818" target="_blank" rel="noopener">bud_dha__</a></div>
-          <div class="rule"></div>
-        </div>
-      </div>
-
-      <!-- C: 규제/AI/엔드게임 -->
-      <div class="item" style="--g1:#ff9f3f; --g2:#ff6f91">
-        <span class="badge">9</span>
-        <div>
-          <div style="font-weight:800">규제와 제도권</div>
-          <div class="meta">11/08 • 심화</div>
-          <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1986956349465559504" target="_blank" rel="noopener">bud_dha__</a></div>
-          <div class="rule"></div>
-        </div>
-      </div>
-
-      <div class="item" style="--g1:#ffd966; --g2:#ffb347">
-        <span class="badge">9.5</span>
-        <div>
-          <div style="font-weight:800">각 나라의 규제 스타일</div>
-          <div class="meta">11/08 • 기본기</div>
-          <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1986966581692539131" target="_blank" rel="noopener">bud_dha__</a></div>
-          <div class="rule"></div>
-        </div>
-      </div>
-
-      <div class="item" style="--g1:#9b8cff; --g2:#5b3cff">
-        <span class="badge">9.5+</span>
-        <div>
-          <div style="font-weight:800">규제가 Web3 기술과 손잡는 순간</div>
-          <div class="meta">11/08 • 심화</div>
-          <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1987068825313898601" target="_blank" rel="noopener">bud_dha__</a></div>
-          <div class="rule"></div>
-        </div>
-      </div>
-
-      <div class="item" style="--g1:#b8ff6a; --g2:#39e09b">
-        <span class="badge">10</span>
-        <div>
-          <div style="font-weight:800">AI와 Agentic DeFi</div>
-          <div class="meta">11/09 • 심화</div>
-          <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1987350934188663191" target="_blank" rel="noopener">bud_dha__</a></div>
-          <div class="rule"></div>
-        </div>
-      </div>
-
-      <div class="item" style="--g1:#ff8ad4; --g2:#b86bff">
-        <span class="badge">11</span>
-        <div>
-          <div style="font-weight:800">결론: 돈의 혁명</div>
-          <div class="meta">11/10 • 입문</div>
-          <div class="actions"><a class="chip view" href="https://x.com/bud_dha__/status/1987717916020891941" target="_blank" rel="noopener">bud_dha__</a></div>
-          <div class="rule"></div>
-        </div>
-      </div>
-
-    </div>
+    </section>
   </main>
 
   <script>
@@ -355,41 +497,100 @@
       // 테마 토글
       const btn = document.getElementById('themeToggle');
       const root = document.documentElement;
-      btn.addEventListener('click', ()=>{
-        const now = root.getAttribute('data-theme') || 'light';
-        const next = now === 'dark' ? 'light' : 'dark';
-        root.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
+      if (btn) {
+        btn.addEventListener('click', ()=>{
+          const now = root.getAttribute('data-theme') || 'light';
+          const next = now === 'dark' ? 'light' : 'dark';
+          root.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+        });
+      }
+
+      const READ_KEY = 'crypto-fullcourse-read';
+      function loadReadSet(){
+        try{
+          const raw = localStorage.getItem(READ_KEY);
+          if (!raw) return new Set();
+          const arr = JSON.parse(raw);
+          if (!Array.isArray(arr)) return new Set();
+          return new Set(arr);
+        }catch(e){
+          return new Set();
+        }
+      }
+      function saveReadSet(set){
+        localStorage.setItem(READ_KEY, JSON.stringify(Array.from(set)));
+      }
+
+      const cards = Array.from(document.querySelectorAll('.item[data-part]'));
+      const readSet = loadReadSet();
+      const progressEl = document.getElementById('progressText');
+
+      function updateUI(){
+        document.querySelectorAll('.read-toggle').forEach(btn=>{
+          const card = btn.closest('.item');
+          if (!card) return;
+          const id = card.dataset.part;
+          if (!id) return;
+
+          if (readSet.has(id)) {
+            btn.classList.add('read');
+            btn.textContent = '✅ 봄';
+          } else {
+            btn.classList.remove('read');
+            btn.textContent = '👀 아직 안 봄';
+          }
+        });
+
+        if (progressEl) {
+          const total = cards.length;
+          const done = Array.from(readSet).filter(id =>
+            cards.some(c => c.dataset.part === id)
+          ).length;
+          progressEl.textContent = `진행도: ${done} / ${total} 파트 완료`;
+        }
+      }
+
+      // 카드 클릭 → 트윗 (체크버튼/링크는 예외)
+      cards.forEach(card=>{
+        const link = card.querySelector('.chip.view');
+        if (link && link.href) {
+          card.classList.add('clickable');
+          card.addEventListener('click', e=>{
+            if (e.target.closest('.read-toggle') || e.target.closest('.actions')) return;
+            window.open(link.href, '_blank','noopener');
+          });
+          link.addEventListener('click', e=>{ e.stopPropagation(); });
+        }
       });
 
-      // 카드 전체 클릭 + 난이도 배지 자동 생성
-      function levelToClass(text){
-        if(/핵심\\s*심화|core/i.test(text)) return ['핵심 심화','d-core'];
-        if(/심화|hard/i.test(text))        return ['심화','d-hard'];
-        if(/기본기|mid/i.test(text))       return ['기본기','d-mid'];
-        if(/입문|easy/i.test(text))        return ['입문','d-easy'];
-        return null;
-      }
-      document.querySelectorAll('.item').forEach((card)=>{
-        const link = card.querySelector('.actions a[href]');
-        if(link){
-          card.classList.add('clickable');
-          card.addEventListener('click', (e)=>{
-            if(e.target.closest('.actions')) return;
-            window.open(link.getAttribute('href'), '_blank', 'noopener');
-          });
-        }
-        const meta = card.querySelector('.meta');
-        if(meta){
-          const m = levelToClass(meta.textContent);
-          if(m){
-            const badge = document.createElement('span');
-            badge.className = 'd-badge ' + m[1];
-            badge.textContent = m[0];
-            card.appendChild(badge);
-          }
-        }
+      // 읽음 토글 버튼
+      document.querySelectorAll('.read-toggle').forEach(btn=>{
+        btn.addEventListener('click', e=>{
+          e.stopPropagation();
+          const card = btn.closest('.item');
+          if (!card) return;
+          const id = card.dataset.part;
+          if (!id) return;
+
+          if (readSet.has(id)) readSet.delete(id);
+          else readSet.add(id);
+
+          saveReadSet(readSet);
+          updateUI();
+        });
       });
+
+      // 대단원 접기/펼치기
+      const chapter = document.getElementById('chapter-fullcourse');
+      const header = document.getElementById('chapter-header');
+      if (chapter && header) {
+        header.addEventListener('click', ()=>{
+          chapter.classList.toggle('collapsed');
+        });
+      }
+
+      updateUI();
     })();
   </script>
 </body>
